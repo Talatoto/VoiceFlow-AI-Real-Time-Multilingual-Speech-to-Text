@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced Speech-to-Text AI Platform - Professional voice transcription with real-time processing">
+    <title>VoiceFlow AI - Advanced Speech Recognition</title>
+    <link rel="stylesheet" href="advanced_styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-gradient"></div>
+    <div class="bg-particles" id="particles"></div>
+    <div class="bg-mesh"></div>
+
+    <!-- Main Application Container -->
+    <div class="app-container">
+        <!-- Navigation Header -->
+        <nav class="nav-header">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <div class="brand-icon">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <div class="brand-text">
+                        <h1 class="brand-title">VoiceFlow AI</h1>
+                        <span class="brand-subtitle">Advanced Speech Recognition</span>
+                    </div>
+                </div>
+                
+                <div class="nav-controls">
+                    <button class="nav-btn" id="theme-toggle" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="nav-btn" id="settings-btn" title="Settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="nav-btn" id="help-btn" title="Help">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h2 class="hero-title">
+                        Transform Your Voice Into
+                        <span class="gradient-text">Perfect Text</span>
+                    </h2>
+                    <p class="hero-description">
+                        Experience next-generation speech recognition with AI-powered accuracy,
+                        real-time processing, and multi-language support.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Control Panel -->
+            <section class="control-panel">
+                <div class="panel-grid">
+                    <!-- Language & Settings Card -->
+                    <div class="control-card settings-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3 class="card-title">Language & Settings</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="setting-group">
+                                <label class="setting-label">
+                                    <i class="fas fa-language"></i>
+                                    Recognition Language
+                                </label>
+                                <div class="custom-select">
+                                    <select id="language-select" class="select-input">
+                                        <option value="en-US" data-flag="🇺🇸">English (US)</option>
+                                        <option value="ar-SA" data-flag="🇸🇦">العربية (Arabic)</option>
+                                        <option value="en-GB" data-flag="🇬🇧">English (UK)</option>
+                                        <option value="fr-FR" data-flag="🇫🇷">Français (French)</option>
+                                        <option value="es-ES" data-flag="🇪🇸">Español (Spanish)</option>
+                                        <option value="de-DE" data-flag="🇩🇪">Deutsch (German)</option>
+                                        <option value="ja-JP" data-flag="🇯🇵">日本語 (Japanese)</option>
+                                        <option value="zh-CN" data-flag="🇨🇳">中文 (Chinese)</option>
+                                    </select>
+                                    <div class="select-arrow">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="settings-grid">
+                                <div class="setting-item">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="real-time-toggle" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <div class="setting-info">
+                                        <span class="setting-name">Real-time Processing</span>
+                                        <span class="setting-desc">Live transcription</span>
+                                    </div>
+                                </div>
+
+                                <div class="setting-item">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="auto-punctuation" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <div class="setting-info">
+                                        <span class="setting-name">Auto Punctuation</span>
+                                        <span class="setting-desc">Smart formatting</span>
+                                    </div>
+                                </div>
+
+                                <div class="setting-item">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="noise-reduction">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <div class="setting-info">
+                                        <span class="setting-name">Noise Reduction</span>
+                                        <span class="setting-desc">Enhanced clarity</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recording Control Card -->
+                    <div class="control-card recording-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                            <h3 class="card-title">Voice Recording</h3>
+                        </div>
+                        <div class="card-content">
+                            <!-- Recording Status -->
+                            <div class="recording-status">
+                                <div class="status-display" id="status-display">
+                                    <div class="status-indicator" id="status-indicator">
+                                        <div class="status-pulse"></div>
+                                        <i class="status-icon fas fa-microphone-slash"></i>
+                                    </div>
+                                    <div class="status-info">
+                                        <span class="status-text" id="status-text">Ready to Record</span>
+                                        <span class="status-time" id="status-time">00:00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Audio Visualizer -->
+                            <div class="audio-visualizer-container">
+                                <canvas id="audio-visualizer" class="audio-canvas"></canvas>
+                                <div class="visualizer-overlay">
+                                    <div class="frequency-bars" id="frequency-bars"></div>
+                                </div>
+                            </div>
+
+                            <!-- Control Buttons -->
+                            <div class="control-buttons">
+                                <button class="control-btn primary-btn" id="record-btn" data-action="start">
+                                    <div class="btn-content">
+                                        <i class="btn-icon fas fa-play"></i>
+                                        <span class="btn-text">Start Recording</span>
+                                    </div>
+                                    <div class="btn-ripple"></div>
+                                </button>
+
+                                <button class="control-btn secondary-btn" id="pause-btn" disabled>
+                                    <div class="btn-content">
+                                        <i class="btn-icon fas fa-pause"></i>
+                                        <span class="btn-text">Pause</span>
+                                    </div>
+                                    <div class="btn-ripple"></div>
+                                </button>
+
+                                <button class="control-btn danger-btn" id="stop-btn" disabled>
+                                    <div class="btn-content">
+                                        <i class="btn-icon fas fa-stop"></i>
+                                        <span class="btn-text">Stop</span>
+                                    </div>
+                                    <div class="btn-ripple"></div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Transcription Section -->
+            <section class="transcription-section">
+                <div class="transcription-container">
+                    <!-- Transcription Header -->
+                    <div class="transcription-header">
+                        <div class="header-left">
+                            <h3 class="section-title">
+                                <i class="fas fa-file-alt"></i>
+                                Live Transcription
+                            </h3>
+                            <div class="transcription-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Words:</span>
+                                    <span class="stat-value" id="word-count">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Accuracy:</span>
+                                    <span class="stat-value" id="accuracy-score">--</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Duration:</span>
+                                    <span class="stat-value" id="duration-display">00:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="header-actions">
+                            <button class="action-btn" id="clear-btn" title="Clear Text">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                            <button class="action-btn" id="copy-btn" title="Copy Text">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <button class="action-btn" id="download-btn" title="Download">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="action-btn" id="share-btn" title="Share">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Text Editor -->
+                    <div class="text-editor-container">
+                        <div class="editor-toolbar">
+                            <div class="toolbar-group">
+                                <button class="toolbar-btn" id="bold-btn" title="Bold">
+                                    <i class="fas fa-bold"></i>
+                                </button>
+                                <button class="toolbar-btn" id="italic-btn" title="Italic">
+                                    <i class="fas fa-italic"></i>
+                                </button>
+                                <button class="toolbar-btn" id="underline-btn" title="Underline">
+                                    <i class="fas fa-underline"></i>
+                                </button>
+                            </div>
+                            <div class="toolbar-group">
+                                <button class="toolbar-btn" id="undo-btn" title="Undo">
+                                    <i class="fas fa-undo"></i>
+                                </button>
+                                <button class="toolbar-btn" id="redo-btn" title="Redo">
+                                    <i class="fas fa-redo"></i>
+                                </button>
+                            </div>
+                            <div class="toolbar-group">
+                                <button class="toolbar-btn" id="font-size-btn" title="Font Size">
+                                    <i class="fas fa-text-height"></i>
+                                </button>
+                                <button class="toolbar-btn" id="highlight-btn" title="Highlight">
+                                    <i class="fas fa-highlighter"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="editor-content">
+                            <div class="live-transcription" id="live-transcription">
+                                <div class="live-text" id="live-text"></div>
+                                <div class="typing-indicator" id="typing-indicator">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                            
+                            <textarea 
+                                id="transcription-editor" 
+                                class="text-editor"
+                                placeholder="Your transcribed text will appear here. You can edit it in real-time..."
+                                spellcheck="true"
+                                autocomplete="off"></textarea>
+                        </div>
+
+                        <!-- Confidence Indicator -->
+                        <div class="confidence-bar-container">
+                            <div class="confidence-label">
+                                <i class="fas fa-chart-line"></i>
+                                Confidence Level
+                            </div>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" id="confidence-fill"></div>
+                                <span class="confidence-percentage" id="confidence-percentage">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Export & Actions Section -->
+            <section class="export-section">
+                <div class="export-container">
+                    <h3 class="section-title">
+                        <i class="fas fa-file-export"></i>
+                        Export & Share
+                    </h3>
+                    
+                    <div class="export-grid">
+                        <div class="export-card" id="export-txt">
+                            <div class="export-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="export-info">
+                                <h4 class="export-title">Plain Text</h4>
+                                <p class="export-desc">Simple .txt format</p>
+                            </div>
+                            <div class="export-action">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+
+                        <div class="export-card" id="export-docx">
+                            <div class="export-icon">
+                                <i class="fas fa-file-word"></i>
+                            </div>
+                            <div class="export-info">
+                                <h4 class="export-title">Word Document</h4>
+                                <p class="export-desc">Formatted .docx file</p>
+                            </div>
+                            <div class="export-action">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+
+                        <div class="export-card" id="export-pdf">
+                            <div class="export-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="export-info">
+                                <h4 class="export-title">PDF Document</h4>
+                                <p class="export-desc">Professional format</p>
+                            </div>
+                            <div class="export-action">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+
+                        <div class="export-card" id="export-audio">
+                            <div class="export-icon">
+                                <i class="fas fa-file-audio"></i>
+                            </div>
+                            <div class="export-info">
+                                <h4 class="export-title">Audio File</h4>
+                                <p class="export-desc">Original recording</p>
+                            </div>
+                            <div class="export-action">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+
+                        <div class="export-card" id="export-json">
+                            <div class="export-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="export-info">
+                                <h4 class="export-title">JSON Data</h4>
+                                <p class="export-desc">Structured format</p>
+                            </div>
+                            <div class="export-action">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+
+                        <div class="export-card" id="export-srt">
+                            <div class="export-icon">
+                                <i class="fas fa-closed-captioning"></i>
+                            </div>
+                            <div class="export-info">
+                                <h4 class="export-title">Subtitles</h4>
+                                <p class="export-desc">SRT format</p>
+                            </div>
+                            <div class="export-action">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p class="footer-text">
+                        &copy; 2025 VoiceFlow AI. Powered by advanced machine learning.
+                    </p>
+                </div>
+                <div class="footer-right">
+                    <a href="#" class="footer-link">Privacy</a>
+                    <a href="#" class="footer-link">Terms</a>
+                    <a href="#" class="footer-link">API</a>
+                    <a href="#" class="footer-link">Support</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modals and Overlays -->
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Advanced Settings</h3>
+                <button class="modal-close" id="close-settings">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="settings-tabs">
+                    <button class="tab-btn active" data-tab="audio">Audio</button>
+                    <button class="tab-btn" data-tab="transcription">Transcription</button>
+                    <button class="tab-btn" data-tab="export">Export</button>
+                </div>
+                
+                <div class="tab-content active" id="audio-tab">
+                    <div class="setting-section">
+                        <h4>Audio Quality</h4>
+                        <div class="setting-row">
+                            <label>Sample Rate</label>
+                            <select id="sample-rate">
+                                <option value="16000">16 kHz (Standard)</option>
+                                <option value="22050">22.05 kHz</option>
+                                <option value="44100" selected>44.1 kHz (High Quality)</option>
+                                <option value="48000">48 kHz (Professional)</option>
+                            </select>
+                        </div>
+                        <div class="setting-row">
+                            <label>Bit Rate</label>
+                            <select id="bit-rate">
+                                <option value="64000">64 kbps</option>
+                                <option value="128000" selected>128 kbps</option>
+                                <option value="192000">192 kbps</option>
+                                <option value="320000">320 kbps</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="transcription-tab">
+                    <div class="setting-section">
+                        <h4>Recognition Settings</h4>
+                        <div class="setting-row">
+                            <label>Confidence Threshold</label>
+                            <input type="range" id="confidence-threshold" min="0" max="100" value="75">
+                            <span class="range-value">75%</span>
+                        </div>
+                        <div class="setting-row">
+                            <label>Processing Mode</label>
+                            <select id="processing-mode">
+                                <option value="streaming">Real-time Streaming</option>
+                                <option value="batch">Batch Processing</option>
+                                <option value="hybrid" selected>Hybrid Mode</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="export-tab">
+                    <div class="setting-section">
+                        <h4>Export Preferences</h4>
+                        <div class="setting-row">
+                            <label>Default Format</label>
+                            <select id="default-format">
+                                <option value="txt">Plain Text</option>
+                                <option value="docx" selected>Word Document</option>
+                                <option value="pdf">PDF</option>
+                            </select>
+                        </div>
+                        <div class="setting-row">
+                            <label>Include Timestamps</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="include-timestamps">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <h3 class="loading-title">Processing Audio</h3>
+            <p class="loading-text" id="loading-text">Analyzing speech patterns...</p>
+            <div class="loading-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="loading-progress"></div>
+                </div>
+                <span class="progress-percentage" id="loading-percentage">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="advanced_script.js"></script>
+
+  <!-- AssemblyAI bridge (connects frontend to server.py) -->
+  <script src="aai_bridge.js"></script>
+</body>
+</html>
+
