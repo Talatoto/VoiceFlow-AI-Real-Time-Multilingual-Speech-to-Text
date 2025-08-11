@@ -17,7 +17,6 @@ from assemblyai.streaming.v3 import (
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# 🔥 Hardcoded API key (per your request)
 API_KEY = "8bda2c5f253c46c8afc2188d3b2dec2e"
 
 app = FastAPI()
